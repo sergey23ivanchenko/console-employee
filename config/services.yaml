@@ -29,3 +29,17 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Command\EmployeeDuty\EmployeeCommand:
+        class:     App\Command\EmployeeDuty\EmployeeCommand
+        factory:   '@App\Command\EmployeeDuty\Factory\EmployeeCommandFactory'
+        arguments: ['@App\Command\EmployeeDuty\Service\EmployeeService']
+
+    App\Command\EmployeeDuty\CheckDutyCommand:
+        class:     App\Command\EmployeeDuty\CheckDutyCommand
+        factory:   '@App\Command\EmployeeDuty\Factory\CheckDutyCommandFactory'
+        arguments: ['@App\Command\EmployeeDuty\Service\EmployeeService']
+
+    App\Command\EmployeeDuty\Service\EmployeeService:
+        class:     App\Command\EmployeeDuty\Service\EmployeeService
+        factory:   '@App\Command\EmployeeDuty\Factory\EmployeeServiceFactory'
